@@ -1,0 +1,33 @@
+{
+  "name": "eBay Api Explorer",
+  "description": "Sample App to explore eBay's Shopping and Trading APIs",
+  "keywords": [
+    "eBay",
+    "Shopping",
+    "Trading", 
+    "ecommerce"
+  ],
+  "website": "https://developer.ebay.com",
+  "repository": "https://github.com/kmanicka/ebay-api-explorer",
+  "logo": "https://go.developer.ebay.com/sites/default/files/developersProgram_horz.png",
+  "env": {
+    "SANDBOX_DEVID": {
+      "description": "Sandbox Application Key Dev ID",
+    },
+    "SANDBOX_APPID": {
+      "description": "Sandbox Application Key AppID",
+    },
+    "SANDBOX_CERTID": {
+      "description": "Sandbox Application Key CertID",
+    },
+    "PRODUCTION_DEVID": {
+      "description": "Production Application Key Dev ID",
+    },
+    "PRODUCTION_APPID": {
+      "description": "Production Application Key AppID",
+    },
+    "PRODUCTION_CERTID": {
+      "description": "Production Application Key CertID",
+    }
+  }
+}
