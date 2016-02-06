@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-        <listEntry value="/eBay API Explorer"/>
+        <listEntry value="/ebay-api-explorer"/>
     </listAttribute>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
         <listEntry value="4"/>
@@ -15,6 +15,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="play.server.Server"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="eBay API Explorer"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=" -XX:-UseSplitVerifier -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Dplay.debug=yes -Dplay.id= -Dapplication.path=&quot;${project_loc:eBay API Explorer}&quot; -Djava.endorsed.dirs=&quot;C:\play\play-1.4.1/framework/endorsed&quot; -javaagent:&quot;C:\play\play-1.4.1/framework/play-1.4.1.jar&quot;"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=" -noverify -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Dplay.debug=yes -Dplay.id= -Dapplication.path=&quot;${project_loc:eBay API Explorer}&quot; -Djava.endorsed.dirs=&quot;C:\Play\play-1.4.1/framework/endorsed&quot; -javaagent:&quot;C:\Play\play-1.4.1/framework/play-1.4.1.jar&quot;"/>
 </launchConfiguration>
 
