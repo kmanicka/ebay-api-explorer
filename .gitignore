@@ -14,3 +14,9 @@ server.pid
 /dist/
 .cache
 /project/project
+/eclipse/classes
+eclipse/classes
+eclipse/.settings/
+.settings/
+eclipse/classes/*
+eclipse/classes/
