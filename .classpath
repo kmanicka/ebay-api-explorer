@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="docviewer"/>
 	<classpathentry kind="src" path="public"/>
 	<classpathentry kind="src" path="conf"/>
+	<classpathentry kind="src" path="documentation"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/play/play-1.4.1/framework/play-1.4.1.jar" sourcepath="C:/play/play-1.4.1/framework/src"/>
 	<classpathentry kind="lib" path="C:/play/play-1.4.1/modules/docviewer/lib/play-docviewer.jar"/>
