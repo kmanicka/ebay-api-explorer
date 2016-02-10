@@ -38,3 +38,4 @@ eclipse/classes/*
 eclipse/classes/
 /.project
 /.gitignore
+.env
