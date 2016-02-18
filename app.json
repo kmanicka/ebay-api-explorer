@@ -20,6 +20,9 @@
     "SANDBOX_CERTID": {
       "description": "Sandbox Application Key CertID"
     },
+    "SANDBOX_AUTH_TOKEN": {
+      "description": "Sandbox User Auth Token"
+    },
     "PRODUCTION_DEVID": {
       "description": "Production Application Key Dev ID"
     },

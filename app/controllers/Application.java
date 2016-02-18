@@ -28,9 +28,11 @@ public class Application extends Controller {
     	SettingsView settingsView = new SettingsView();
     	settingsView.time = time.getTime();
     	settingsView.shoppingCallAck = time.getAck();
+    	settingsView.shoppingCallResponse = time.getResponseString();
     	
     	settingsView.officialTime = officialTime.getTime();
     	settingsView.tradingCallAck = officialTime.getAck();
+    	settingsView.tradingCallResponse = officialTime.getResponseString();
     	
         render(settingsView);
     }

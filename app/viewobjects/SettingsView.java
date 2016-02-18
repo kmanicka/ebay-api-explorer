@@ -6,9 +6,11 @@ import common.Util;
 public class SettingsView implements IConstants {
 	public String time;
 	public String shoppingCallAck;
+	public String shoppingCallResponse;
 	
 	public String officialTime;
 	public String tradingCallAck;
+	public String tradingCallResponse;
 	
 	public String sandboxDevId;
 	public String sandboxAppId;
