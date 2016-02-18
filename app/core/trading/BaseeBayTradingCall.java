@@ -7,6 +7,12 @@ import core.BaseeBayCall;
 
 public abstract class BaseeBayTradingCall extends BaseeBayCall {
 
+
+	@Override
+	protected String getEndPoint() {
+		return (isProduction) ? TRADING_PRODUCTION_ENDPOINT : TRADING_SANDBOX_ENDPOINT;
+	}
+
 	protected Map<String, String> getApiHeaders() {
 		Map<String, String> headers = new HashMap<String, String>();
 		headers.put("X-EBAY-API-COMPATIBILITY-LEVEL", "951");
@@ -20,6 +26,12 @@ public abstract class BaseeBayTradingCall extends BaseeBayCall {
 	}
 
 	protected String getRequestCred() {
-		return "<RequesterCredentials><eBayAuthToken>" + "TBD" + "</eBayAuthToken></RequesterCredentials>";
+		String authToken = null;
+		if (!isProduction) {
+			authToken = getEnvVariable(ENV_SANDBOX_AUTH_TOKEN);
+		}else{
+			authToken = "TBD";
+		}
+		return "<RequesterCredentials><eBayAuthToken>" + authToken + "</eBayAuthToken></RequesterCredentials>";
 	}
 }

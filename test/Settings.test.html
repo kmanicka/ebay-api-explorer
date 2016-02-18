@@ -1,0 +1,23 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    // Open the home page, and check that no error occured
+    open('/settings')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Settings')
+    
+    assertTextPresent('Shopping API Ack Success')
+    assertTextPresent('Trading API Ack Success')
+    
+    assertTextPresent('Sandbox Dev ID : SET')
+    assertTextPresent('Sandbox App ID : SET')
+    assertTextPresent('Sandbox Cert ID : SET')
+    assertTextPresent('Sandbox User Auth Token : SET')
+    assertTextPresent('Production Dev ID : SET')
+    assertTextPresent('Production App ID : SET')
+    assertTextPresent('Production Cert ID : SET')
+    assertTextPresent('Produciton User Auth Token : NULL')
+    
+#{/selenium}
