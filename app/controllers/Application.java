@@ -3,6 +3,7 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import viewobjects.IndexView;
+import viewobjects.SettingsView;
 
 import java.util.*;
 
@@ -11,24 +12,27 @@ import core.trading.calls.GeteBayOfficialTime;
 import models.*;
 
 public class Application extends Controller {
-
-	static String getEnvVariable(String name) {
-		return System.getenv(name);
-	}
-
 	
-    public static void index() {
+    public static void index() {    	
+    	IndexView indexView = new IndexView();
+        render(indexView);
+    }
+    
+    public static void settings(){
     	GeteBayTime time = new GeteBayTime();
     	time.calleBay();
     	
     	GeteBayOfficialTime officialTime = new GeteBayOfficialTime();
     	officialTime.calleBay();
     	
-    	IndexView indexView = new IndexView();
-    	indexView.time = time.getTime();
-    	indexView.officialTime = officialTime.getTime();
+    	SettingsView settingsView = new SettingsView();
+    	settingsView.time = time.getTime();
+    	settingsView.shoppingCallAck = time.getAck();
     	
-        render(indexView);
+    	settingsView.officialTime = officialTime.getTime();
+    	settingsView.tradingCallAck = officialTime.getAck();
+    	
+        render(settingsView);
     }
 
 }
