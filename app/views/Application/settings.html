@@ -1,0 +1,43 @@
+#{extends 'bootstrapmain.html' /}
+#{set title:'eBay API Explorer | Settings' /}
+
+
+<h1>Settings</h1> 
+
+<h3>End Points</h3>
+<p>Shopping Sandbox Endpoint : ${settingsView.shoppingSandboxEndpoint}</p>
+<p>Shopping Production Endpoint : ${settingsView.shoppingProductionEndpoint}</p>
+<p>Trading Sandbox Endpoint : ${settingsView.tradingSandboxEndpoint}</p>
+<p>Trading Production Endpoint : ${settingsView.tradingProductionEndpoint}</p>
+
+<h3>Config Vars</h3>
+<p>Sandbox Dev ID : ${settingsView.sandboxDevId}</p>
+<p>Sandbox App ID : ${settingsView.sandboxAppId}</p>
+<p>Sandbox Cert ID : ${settingsView.sandboxCert}</p>
+<p>Sandbox User Auth Token : ${settingsView.sandboxAuthToken}</p>
+
+<p>Production Dev ID : ${settingsView.sandboxDevId}</p>
+<p>Production App ID : ${settingsView.sandboxAppId}</p>
+<p>Production Cert ID : ${settingsView.sandboxCert}</p>
+<p>Produciton User Auth Token : ${settingsView.productionAuthToken}</p>
+
+<h3>Shopping API Test</h3>
+<p>Shopping API Ack ${settingsView.shoppingCallAck}</p>
+<p>Current Time is : ${settingsView.time}</p>
+
+<div class="form-group">
+  <label for="response1">GeteBayTime Response:</label>
+  <textarea class="form-control" rows="5" id="response1">${settingsView.shoppingCallResponse}</textarea>
+</div>
+
+<h3>Trading API Test</h3>
+<p>Trading API Ack ${settingsView.tradingCallAck}</p>
+<p>Current Official Time is : ${settingsView.officialTime}</p>
+<div class="form-group">
+  <label for="response2">GeteBayOfficialTime Response:</label>
+  <textarea class="form-control" rows="5" id="response2">${settingsView.shoppingCallResponse}</textarea>
+</div>
+
+
+
+	
