@@ -1,0 +1,55 @@
+#{extends 'Shopping/shoppingmain.html' /}
+#{set title:'eBay API Explorer | Item' /}
+
+
+
+
+<div class="page-header">
+    <h1>Item</h1>
+
+  <div class="row">
+  <div class="col-md-4">
+  	<form action="@{Shopping.getItem}" method="get">
+    <div class="input-group">
+      <input id="itemid" name="itemid" type="text" class="form-control" aria-label="ebay item id">
+      <div class="input-group-btn">
+		<input id="finditem" type="submit" value="Find Item" class="btn btn-default">
+      </div>
+    </div>
+    </form>
+  </div>
+  </div>
+</div>
+
+%{
+     if(getItemView.itemid != null) {
+}%
+
+<div class="row">
+  <div class="col-lg-12">    
+    <ul class="nav nav-tabs">
+	    <li class="active"><a data-toggle="pill" href="#home">Item</a></li>
+	    <li><a data-toggle="pill" href="#request">Request Xml</a></li>
+	    <li><a data-toggle="pill" href="#response">Response Xml</a></li>
+    </ul>
+  
+  <div class="tab-content">
+	  <div id="home" class="tab-pane fade in active">
+	    <h3>${getItemView.itemid}</h3>
+	    <h3>${getItemView.title}</h3>
+
+	  </div>
+	  <div id="request" class="tab-pane fade">
+	    <pre class="prettyprint">${getItemView.requestString}</pre>
+	  </div>
+	  <div id="response" class="tab-pane fade">
+	    <pre class="prettyprint">${getItemView.responseString}</pre>
+	  </div>
+  </div>
+  
+  </div>
+</div><!-- /.row -->
+
+%{
+     }
+}%

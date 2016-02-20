@@ -36,5 +36,9 @@ public class Application extends Controller {
     	
         render(settingsView);
     }
+    
+    public static void about(){
+    	render();
+    }
 
 }

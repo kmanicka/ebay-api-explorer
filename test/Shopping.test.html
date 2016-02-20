@@ -1,0 +1,34 @@
+#{selenium}
+    // Open the User Page
+    open('/shopping/user')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | User')
+
+    assertTextNotPresent('<Ack>Success</Ack>')
+
+    type('username', 'atoz_stores')
+    clickAndWait('finduser')
+   
+    assertTextPresent('<Ack>Success</Ack>')
+    
+#{/selenium}
+
+#{selenium}
+    // Open the Item Page
+    open('/shopping/item')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Item')
+
+    assertTextNotPresent('<Ack>Success</Ack>')
+
+    type('itemid', '1234')
+    clickAndWait('finditem')
+   
+    assertTextPresent('<Ack>Failure</Ack>')
+    assertTextPresent('<ShortMessage>Invalid item ID.</ShortMessage>')
+    
+#{/selenium}
