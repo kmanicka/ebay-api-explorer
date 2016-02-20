@@ -54,7 +54,8 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 			System.out.println("BaseeBayCall.calleBay()");
 			
 			WSRequest request = WS.url(getEndPoint());
-			this.requestString = getRequestBody();
+			String unformatedRequestString = getRequestBody();
+			this.requestString = Util.prettyXml(unformatedRequestString);
 			this.headers = getApiHeaders();
 
 			System.out.println("Request >>>>>>");
@@ -65,13 +66,16 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 			request.headers(this.headers);
 			request.body(this.requestString);
 			HttpResponse res = request.post();
-			this.responseString = res.getString();
 
+			String unformatedResponseString = res.getString();
+			this.responseXml = XML.getDocument(unformatedResponseString);			
+			this.responseString = Util.prettyXml(this.responseXml);
+			
 			System.out.println("Response >>>>>>");
-			System.out.println(responseString);
+			System.out.println(this.responseString);
 
-			this.responseXml = XML.getDocument(this.responseString);			
 			this.ack = XPath.selectText("//Ack", this.responseXml);
+			
 			processResponse();
 		} catch (Exception e) {
 			errors.add(e.getMessage());
