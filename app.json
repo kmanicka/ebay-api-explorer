@@ -11,6 +11,10 @@
   "repository": "https://github.com/kmanicka/ebay-api-explorer",
   "logo": "https://go.developer.ebay.com/sites/default/files/developersProgram_horz.png",
   "env": {
+    "PLAY_APP_SECRET": {
+      "description": "Play Framework Application Secret, Change this to secure your application",
+      "value": "qjc1ourASNyQ43aISnwwhj0UiquJlXpwseSsYpnS2ZcfTE4TbnmzZiVuxRJBP4ad"
+    },
     "SANDBOX_DEVID": {
       "description": "Sandbox Application Key Dev ID"
     },

@@ -5,6 +5,10 @@
 # Home page
 GET     /                                       Application.index
 GET     /settings                               Application.settings
+GET     /about                                  Application.about
+
+GET     /shopping/item                          Shopping.getItem
+GET     /shopping/user                          Shopping.getUser
 
 
 # Ignore favicon requests

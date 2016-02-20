@@ -17,6 +17,8 @@ import play.libs.XPath;
 public abstract class BaseeBayCall implements IConstants, IeBayCall {
 	
 	protected Boolean isProduction;
+	private Map<String,String> headers;
+	private String requestString;
 	private String responseString;
 	private Document responseXml;
 	private String ack;
@@ -50,28 +52,38 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 	public void calleBay() {
 		try {
 			System.out.println("BaseeBayCall.calleBay()");
+			
 			WSRequest request = WS.url(getEndPoint());
-			String requestString = getRequestBody();
+			this.requestString = getRequestBody();
+			this.headers = getApiHeaders();
 
 			System.out.println("Request >>>>>>");
-			System.out.println(getApiHeaders().toString());
-			System.out.println(requestString);
+			System.out.println(this.headers.toString());
+			System.out.println(this.requestString);
 			
 
-			request.headers(getApiHeaders());
-			request.body(requestString);
+			request.headers(this.headers);
+			request.body(this.requestString);
 			HttpResponse res = request.post();
 			this.responseString = res.getString();
 
 			System.out.println("Response >>>>>>");
 			System.out.println(responseString);
 
-			this.responseXml = XML.getDocument(this.responseString);
+			this.responseXml = XML.getDocument(this.responseString);			
 			this.ack = XPath.selectText("//Ack", this.responseXml);
 			processResponse();
 		} catch (Exception e) {
 			errors.add(e.getMessage());
 		}
+	}
+
+	public Map<String, String> getHeaders() {
+		return headers;
+	}
+
+	public String getRequestString() {
+		return requestString;
 	}
 
 	public String getResponseString() {
