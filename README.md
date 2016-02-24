@@ -10,3 +10,24 @@ See it in action at  [ebay-api-explorer.herokuapp.com](https://ebay-api-explorer
 
 ## Deploy your own copy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kmanicka/ebay-api-explorer/tree/master)
+
+
+
+## Versions
+
+###Version 0.3
+* GetUserProfile Shopping API and Page
+* GetSingleItem Shopping API and Page
+* Exteranalized the Play Application Secret
+
+###Version 0.2
+* eBay API Setup
+* GeteBayTime Shopping Api
+* GeteBayOfficialTime Shopping Api
+* Settings Page
+
+###Version 0.1
+* Basic Skeleton of the applicaiton
+* Deployment to Heroku
+* CI via CodeShip.
+* Heroku Pipeline Setup
