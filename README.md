@@ -15,10 +15,13 @@ See it in action at  [ebay-api-explorer.herokuapp.com](https://ebay-api-explorer
 
 ## Versions
 
+###Version 0.4
+* Made Tabbed API exploration Page. Separate Input and Output Tab 
+
 ###Version 0.3
 * GetUserProfile Shopping API and Page
 * GetSingleItem Shopping API and Page
-* Exteranalized the Play Application Secret
+* Externalized the Play Application Secret
 
 ###Version 0.2
 * eBay API Setup
@@ -27,7 +30,7 @@ See it in action at  [ebay-api-explorer.herokuapp.com](https://ebay-api-explorer
 * Settings Page
 
 ###Version 0.1
-* Basic Skeleton of the applicaiton
+* Basic Skeleton of the application
 * Deployment to Heroku
 * CI via CodeShip.
 * Heroku Pipeline Setup
