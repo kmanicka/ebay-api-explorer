@@ -6,10 +6,12 @@ public interface IConstants {
 	public static final String ENV_SANDBOX_DEVID = "SANDBOX_DEVID";
 	public static final String ENV_SANDBOX_APPID = "SANDBOX_APPID";
 	public static final String ENV_SANDBOX_CERTID = "SANDBOX_CERTID";
+	public static final String ENV_SANDBOX_RUNAME = "SANDBOX_RUNAME";
 
 	public static final String ENV_PRODUCTION_DEVID = "PRODUCTION_DEVID";
 	public static final String ENV_PRODUCTION_APPID = "PRODUCTION_APPID";
 	public static final String ENV_PRODUCTION_CERTID = "PRODUCTION_CERTID";
+	public static final String ENV_PRODUCTION_RUNAME = "PRODUCTION_RUNAME";
 
 	public static final String ENV_SANDBOX_AUTH_TOKEN = "SANDBOX_AUTH_TOKEN";
 	public static final String ENV_PRODUCTION_AUTH_TOKEN = "PRODUCTION_AUTH_TOKEN";

@@ -48,6 +48,10 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 	protected String getCertName() {
 		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_CERTID) : getEnvVariable(ENV_SANDBOX_CERTID);
 	}
+	
+	protected String getRuName() {
+		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_RUNAME) : getEnvVariable(ENV_SANDBOX_RUNAME);		
+	}
 
 	public void calleBay() {
 		try {
