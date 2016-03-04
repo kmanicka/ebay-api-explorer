@@ -18,6 +18,14 @@ public class Application extends Controller {
         render(indexView);
     }
     
+    public static void trading(){
+    	render();
+    }
+    
+    public static void shopping(){
+    	render();
+    }
+    
     public static void settings(){
     	GeteBayTime time = new GeteBayTime();
     	time.calleBay();

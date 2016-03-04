@@ -7,7 +7,14 @@ import core.BaseeBayCall;
 
 public abstract class BaseeBayTradingCall extends BaseeBayCall {
 
-
+	public BaseeBayTradingCall() {
+		super();
+	}
+	
+	public BaseeBayTradingCall(Boolean isProduction){
+		super(isProduction);
+	}
+	
 	@Override
 	protected String getEndPoint() {
 		return (isProduction) ? TRADING_PRODUCTION_ENDPOINT : TRADING_SANDBOX_ENDPOINT;

@@ -63,6 +63,7 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 			this.headers = getApiHeaders();
 
 			System.out.println("Request >>>>>>");
+			System.out.println(getEndPoint());
 			System.out.println(this.headers.toString());
 			System.out.println(this.requestString);
 			

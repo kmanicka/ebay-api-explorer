@@ -7,6 +7,10 @@ GET     /                                       Application.index
 GET     /settings                               Application.settings
 GET     /about                                  Application.about
 
+GET     /login                          		Login.login
+GET     /logincallbackaccept              		Login.loginAccepted
+GET     /logincallbackdecline              		Login.loginDeclined
+
 GET     /shopping/item                          Shopping.getItem
 GET     /shopping/user                          Shopping.getUser
 

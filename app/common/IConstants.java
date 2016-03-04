@@ -21,5 +21,8 @@ public interface IConstants {
 
 	public static final String TRADING_SANDBOX_ENDPOINT = "https://api.sandbox.ebay.com/ws/api.dll";
 	public static final String TRADING_PRODUCTION_ENDPOINT = "https://api.ebay.com/ws/api.dll";
+	
+	public static final String SANDBOX_SIGNIN_ENDPOINT = "https://signin.sandbox.ebay.com/ws/eBayISAPI.dll?SignIn&";
+	public static final String PRODUCTION_SIGNIN_ENDPOINT = "https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&";
 
 }

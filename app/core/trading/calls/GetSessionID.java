@@ -6,6 +6,10 @@ import play.libs.XPath;
 public class GetSessionID extends BaseeBayTradingCall{
 	public String sessionID;
 
+	public GetSessionID(Boolean isProduction) {
+		super(isProduction);
+	}
+	
 	public String getSessionID() {
 		return sessionID;
 	}

@@ -7,6 +7,10 @@ public class FetchToken  extends BaseeBayTradingCall{
 	public String sessionID;
 	public String eBayAuthToken;
 	
+	public FetchToken(Boolean isProduction) {
+		super(isProduction);
+	}
+	
 	public void setSessionID(String sessionID) {
 		this.sessionID = sessionID;
 	}
