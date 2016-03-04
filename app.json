@@ -24,8 +24,8 @@
     "SANDBOX_CERTID": {
       "description": "Sandbox Application Key CertID"
     },
-    "SANDBOX_AUTH_TOKEN": {
-      "description": "Sandbox User Auth Token"
+    "SANDBOX_RUNAME": {
+      "description": "Sandbox RuName used during login"
     },
     "PRODUCTION_DEVID": {
       "description": "Production Application Key Dev ID"
@@ -35,6 +35,9 @@
     },
     "PRODUCTION_CERTID": {
       "description": "Production Application Key CertID"
+    },
+    "PRODUCTION_RUNAME": {
+      "description": "Production RuName used during login"
     }
   }
 }
