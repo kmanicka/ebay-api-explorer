@@ -16,7 +16,8 @@ See it in action at  [ebay-api-explorer.herokuapp.com](https://ebay-api-explorer
 ## Versions
 
 ###Version 0.5
-* Login with eBay Trading API (Work in Progress) 
+* Login with eBay Trading API
+* Cleanup Env Variables, Seperate instance for Sandbox and Production
 
 ###Version 0.4
 * Made Tabbed API exploration Page. Separate Input and Output Tab 
