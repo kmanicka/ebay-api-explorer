@@ -49,6 +49,13 @@
             <li><a href="@{Application.settings}">Settings</a></li>
             <li><a href="@{Application.about}">About</a></li>
           </ul>
+          #{if session.get("username")}
+          	<p class="navbar-text navbar-right">${session.get("username")}</p>
+          #{/if}
+          
+          #{if !session.get("username")}
+          	<a href="@{Application.login}" class="btn btn-default navbar-btn navbar-right">Sign in</a>          
+          #{/if}
         </div><!--/.nav-collapse -->
       </div>
     </nav>

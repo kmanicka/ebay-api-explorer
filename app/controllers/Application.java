@@ -28,12 +28,12 @@ public class Application extends Controller implements IConstants {
 
 	public static void trading() {
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
-		String eBayAuthToken = (String)Cache.get(session.getId() + "-eBayAuthToken");
+		String eBayAuthToken = (String) Cache.get(session.getId() + "-eBayAuthToken");
 
-		if(eBayAuthToken == null) {
+		if (eBayAuthToken == null) {
 			login(request.url);
 		}
-		
+
 		GeteBayOfficialTime viewData = new GeteBayOfficialTime(eBayAuthToken);
 		viewData.calleBay(eBayCallContext);
 		render(viewData);
@@ -43,21 +43,18 @@ public class Application extends Controller implements IConstants {
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
 		GeteBayTime viewData = new GeteBayTime();
 		viewData.calleBay(eBayCallContext);
-		flash.success("jhi");
-		flash.error("errod");
 		render(viewData);
 	}
-	
-	
+
 	public static void login(String returnUrl) {
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
 		GetSessionID getSessionID = new GetSessionID();
 		getSessionID.calleBay(eBayCallContext);
 		String sessionID = getSessionID.getSessionID();
-		
+
 		Cache.set(session.getId() + "-sessionID", sessionID, "30mn");
 		Cache.set(session.getId() + "-returnUrl", returnUrl, "30mn");
-		
+
 		String signInEndpoint = (eBayCallContext.isSandbox()) ? SANDBOX_SIGNIN_ENDPOINT : PRODUCTION_SIGNIN_ENDPOINT;
 
 		String urlString = signInEndpoint + "runame=" + eBayCallContext.getRuName() + "&SessID="
@@ -79,23 +76,38 @@ public class Application extends Controller implements IConstants {
 		fetchToken.calleBay(eBayCallContext);
 
 		String eBayAuthToken = fetchToken.geteBayAuthToken();
-		Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
 
-		String returnUrl = (String) Cache.get(session.getId() + "-returnUrl");
-		if(returnUrl == null || "".equals(returnUrl.trim())){
-			returnUrl ="/";
+		if (eBayAuthToken != null) {
+
+			session.put("username", username);
+			Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
+
+			String returnUrl = (String) Cache.get(session.getId() + "-returnUrl");
+			if (returnUrl == null || "".equals(returnUrl.trim())) {
+				returnUrl = "/";
+			}
+			flash.success("Welcome " + username);
+			redirect(returnUrl);
 		}
-		flash.success("Welcome " + username);
-		redirect(returnUrl);
-	}
 
-	public static void loginDeclined() {
-		flash.error("Login Failed");
+		flash.error("Login Failed : couldn't fetch auth token");
 		index();
 	}
 
+	public static void loginDeclined() {
+		flash.error("Login Failed : User declined to provide eBay Credentials");
+		index();
+	}
 
-	public static void settings() {		
+	public static void logout() {
+		session.remove("username");
+		Cache.delete(session.getId() + "-eBayAuthToken");
+
+		flash.success("Logout Successfull");
+		index();
+	}
+
+	public static void settings() {
 		SettingsView settingsView = new SettingsView();
 		render(settingsView);
 	}
