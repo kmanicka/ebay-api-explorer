@@ -8,8 +8,7 @@ public class GetUserProfile extends BaseeBayShoppingCall {
 	String aboutMeUrl;
 	String feedbackDetailsURL;
 	
-	public GetUserProfile(Boolean isProduction, String userId) {
-		super(isProduction);
+	public GetUserProfile(String userId) {
 		this.userId = userId;
 	}
 

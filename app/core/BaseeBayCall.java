@@ -15,48 +15,44 @@ import play.libs.XML;
 import play.libs.XPath;
 
 public abstract class BaseeBayCall implements IConstants, IeBayCall {
-	
-	protected Boolean isProduction;
-	private Map<String,String> headers;
+
+	private IeBayCallContext eBayCallContext;
+	private Map<String, String> headers;
 	private String requestString;
 	private String responseString;
 	private Document responseXml;
 	private String ack;
 	private List<String> errors;
 
-	public BaseeBayCall() {
-		this(false);
+	protected Boolean isSandbox() {
+		return eBayCallContext.isSandbox();
 	}
 
-	public BaseeBayCall(Boolean isProduction) {
-		super();
-		this.isProduction = isProduction;
-	}
-
-	protected String getEnvVariable(String name) {
-		return Util.getEnvVariable(name); 
+	protected Boolean isProduction() {
+		return !(isSandbox());
 	}
 
 	protected String getDevName() {
-		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_DEVID) : getEnvVariable(ENV_SANDBOX_DEVID);
+		return eBayCallContext.getDevName();
 	}
 
 	protected String getAppName() {
-		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_APPID) : getEnvVariable(ENV_SANDBOX_APPID);
+		return eBayCallContext.getAppName();
 	}
 
 	protected String getCertName() {
-		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_CERTID) : getEnvVariable(ENV_SANDBOX_CERTID);
-	}
-	
-	protected String getRuName() {
-		return (isProduction) ? getEnvVariable(ENV_PRODUCTION_RUNAME) : getEnvVariable(ENV_SANDBOX_RUNAME);		
+		return eBayCallContext.getCertName();
 	}
 
-	public void calleBay() {
+	protected String getRuName() {
+		return eBayCallContext.getRuName();
+	}
+
+	public void calleBay(IeBayCallContext eBayCallContext) {
+		this.eBayCallContext = eBayCallContext;
 		try {
 			System.out.println("BaseeBayCall.calleBay()");
-			
+
 			WSRequest request = WS.url(getEndPoint());
 			String unformatedRequestString = getRequestBody();
 			this.requestString = Util.prettyXml(unformatedRequestString);
@@ -66,21 +62,20 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 			System.out.println(getEndPoint());
 			System.out.println(this.headers.toString());
 			System.out.println(this.requestString);
-			
 
 			request.headers(this.headers);
 			request.body(this.requestString);
 			HttpResponse res = request.post();
 
 			String unformatedResponseString = res.getString();
-			this.responseXml = XML.getDocument(unformatedResponseString);			
+			this.responseXml = XML.getDocument(unformatedResponseString);
 			this.responseString = Util.prettyXml(this.responseXml);
-			
+
 			System.out.println("Response >>>>>>");
 			System.out.println(this.responseString);
 
 			this.ack = XPath.selectText("//Ack", this.responseXml);
-			
+
 			processResponse();
 		} catch (Exception e) {
 			errors.add(e.getMessage());
@@ -111,14 +106,13 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 		return errors;
 	}
 
-	protected abstract String getEndPoint();
-	
 	protected abstract Map<String, String> getApiHeaders();
+
+	protected abstract String getEndPoint();
 
 	protected abstract String getCallName();
 
 	protected abstract String getRequestBody() throws Exception;
 
 	protected abstract void processResponse() throws Exception;
-
 }

@@ -7,8 +7,7 @@ public class GetSingleItem extends BaseeBayShoppingCall{
 	String itemid;
 	String title;
 	
-	public GetSingleItem(Boolean isProduction, String itemid) {
-		super(isProduction);
+	public GetSingleItem(String itemid) {
 		this.itemid = itemid;
 	}
 

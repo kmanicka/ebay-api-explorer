@@ -6,21 +6,11 @@ import java.util.Map;
 import core.BaseeBayCall;
 
 public abstract class BaseeBayShoppingCall extends BaseeBayCall {
-
-	public BaseeBayShoppingCall() {
-		super();
-	}
-	
-	public BaseeBayShoppingCall(Boolean isProduction){
-		super(isProduction);
-	}
-	
 	
 	@Override
 	protected String getEndPoint() {
-		return (isProduction) ? SHOPPING_PRODUCTION_ENDPOINT : SHOPPING_SANDBOX_ENDPOINT;
+		return (isProduction()) ? SHOPPING_PRODUCTION_ENDPOINT : SHOPPING_SANDBOX_ENDPOINT;
 	}
-
 
 	protected Map<String, String> getApiHeaders() {
 		Map<String, String> headers = new HashMap<String, String>();

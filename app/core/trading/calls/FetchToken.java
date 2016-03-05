@@ -3,14 +3,14 @@ package core.trading.calls;
 import core.trading.BaseeBayTradingCall;
 import play.libs.XPath;
 
-public class FetchToken  extends BaseeBayTradingCall{
+public class FetchToken extends BaseeBayTradingCall {
 	public String sessionID;
 	public String eBayAuthToken;
-	
-	public FetchToken(Boolean isProduction) {
-		super(isProduction);
+
+	public FetchToken() {
+		super(null);
 	}
-	
+
 	public void setSessionID(String sessionID) {
 		this.sessionID = sessionID;
 	}
@@ -18,7 +18,7 @@ public class FetchToken  extends BaseeBayTradingCall{
 	public String geteBayAuthToken() {
 		return eBayAuthToken;
 	}
-	
+
 	@Override
 	protected String getCallName() {
 		final String CALL_NAME = "FetchToken";
@@ -27,14 +27,12 @@ public class FetchToken  extends BaseeBayTradingCall{
 
 	@Override
 	protected String getRequestBody() throws Exception {
-		return XML_HEADER
-				+ "<FetchTokenRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">" 
-				+ "<SessionID>" + sessionID + "</SessionID>" 
-				+ "</FetchTokenRequest>";	
+		return XML_HEADER + "<FetchTokenRequest xmlns=\"urn:ebay:apis:eBLBaseComponents\">" + "<SessionID>" + sessionID
+				+ "</SessionID>" + "</FetchTokenRequest>";
 	}
 
 	@Override
 	protected void processResponse() throws Exception {
-		this.eBayAuthToken = XPath.selectText("//eBayAuthToken", super.getResponseXml());		
+		this.eBayAuthToken = XPath.selectText("//eBayAuthToken", super.getResponseXml());
 	}
 }

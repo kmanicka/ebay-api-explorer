@@ -1,5 +1,5 @@
 package core;
 
 public interface IeBayCall {
-	public void calleBay();
+	public void calleBay(IeBayCallContext eBayCallContext);
 }

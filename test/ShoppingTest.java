@@ -7,7 +7,7 @@ public class ShoppingTest extends FunctionalTest{
 
 	   @Test
 	    public void testThatShoppingItemPageWorks() {
-	        Response response = GET("/shopping/item");
+	        Response response = GET("/shopping/getsingleitem");
 	        assertIsOk(response);
 	        assertContentType("text/html", response);
 	        assertCharset(play.Play.defaultWebEncoding, response);
@@ -15,7 +15,7 @@ public class ShoppingTest extends FunctionalTest{
 
 	   @Test
 	    public void testThatShoppingUserPageWorks() {
-	        Response response = GET("/shopping/user");
+	        Response response = GET("/shopping/getuserprofile");
 	        assertIsOk(response);
 	        assertContentType("text/html", response);
 	        assertCharset(play.Play.defaultWebEncoding, response);

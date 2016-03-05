@@ -7,17 +7,16 @@ import core.BaseeBayCall;
 
 public abstract class BaseeBayTradingCall extends BaseeBayCall {
 
-	public BaseeBayTradingCall() {
+	String authToken;
+
+	public BaseeBayTradingCall(String authToken) {
 		super();
+		this.authToken = authToken;
 	}
-	
-	public BaseeBayTradingCall(Boolean isProduction){
-		super(isProduction);
-	}
-	
+
 	@Override
 	protected String getEndPoint() {
-		return (isProduction) ? TRADING_PRODUCTION_ENDPOINT : TRADING_SANDBOX_ENDPOINT;
+		return (isProduction()) ? TRADING_PRODUCTION_ENDPOINT : TRADING_SANDBOX_ENDPOINT;
 	}
 
 	protected Map<String, String> getApiHeaders() {
@@ -33,12 +32,6 @@ public abstract class BaseeBayTradingCall extends BaseeBayCall {
 	}
 
 	protected String getRequestCred() {
-		String authToken = null;
-		if (!isProduction) {
-			authToken = getEnvVariable(ENV_SANDBOX_AUTH_TOKEN);
-		}else{
-			authToken = "TBD";
-		}
-		return "<RequesterCredentials><eBayAuthToken>" + authToken + "</eBayAuthToken></RequesterCredentials>";
+		return "<RequesterCredentials><eBayAuthToken>" + this.authToken + "</eBayAuthToken></RequesterCredentials>";
 	}
 }

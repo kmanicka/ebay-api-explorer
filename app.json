@@ -15,29 +15,21 @@
       "description": "Play Framework Application Secret, Change this to secure your application",
       "value": "qjc1ourASNyQ43aISnwwhj0UiquJlXpwseSsYpnS2ZcfTE4TbnmzZiVuxRJBP4ad"
     },
-    "SANDBOX_DEVID": {
+    "DEVID": {
       "description": "Sandbox Application Key Dev ID"
     },
-    "SANDBOX_APPID": {
+    "APPID": {
       "description": "Sandbox Application Key AppID"
     },
-    "SANDBOX_CERTID": {
+    "CERTID": {
       "description": "Sandbox Application Key CertID"
     },
-    "SANDBOX_RUNAME": {
+    "RUNAME": {
       "description": "Sandbox RuName used during login"
     },
-    "PRODUCTION_DEVID": {
-      "description": "Production Application Key Dev ID"
-    },
-    "PRODUCTION_APPID": {
-      "description": "Production Application Key AppID"
-    },
-    "PRODUCTION_CERTID": {
-      "description": "Production Application Key CertID"
-    },
-    "PRODUCTION_RUNAME": {
-      "description": "Production RuName used during login"
+    "SANDBOX": {
+      "description": "Production Application Key Dev ID",
+      "value": "FALSE"      
     }
   }
 }

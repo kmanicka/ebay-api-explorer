@@ -12,21 +12,23 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
+import core.IeBayCallContext;
 import play.libs.XML;
 
-public class Util {
+public class Util implements IConstants {
+	
 	public static String getEnvVariable(String name) {
-		String value = System.getenv(name); 
+		String value = System.getenv(name);
 		System.out.println("Env Variable : " + name + " = " + value);
 		return value;
 	}
-	
-	public static String prettyXml(String unformatedXml){
+
+	public static String prettyXml(String unformatedXml) {
 		Document document = XML.getDocument(unformatedXml);
 		return prettyXml(document);
 	}
 
-	public static String prettyXml(Document document){
+	public static String prettyXml(Document document) {
 		String prettyXml = null;
 
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -35,7 +37,7 @@ public class Util {
 			StringWriter stringWriter = new StringWriter();
 			transformer = transformerFactory.newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			transformer.transform(new DOMSource(document),new StreamResult(stringWriter));
+			transformer.transform(new DOMSource(document), new StreamResult(stringWriter));
 			prettyXml = stringWriter.toString();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -43,6 +45,5 @@ public class Util {
 		}
 		return prettyXml;
 	}
-
 
 }

@@ -2,20 +2,14 @@ package common;
 
 public interface IConstants {
 	public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+
+	public static final String ENV_SANDBOX = "SANDBOX";
+
+	public static final String ENV_DEVID = "DEVID";
+	public static final String ENV_APPID = "APPID";
+	public static final String ENV_CERTID = "CERTID";
+	public static final String ENV_RUNAME = "RUNAME";
 	
-	public static final String ENV_SANDBOX_DEVID = "SANDBOX_DEVID";
-	public static final String ENV_SANDBOX_APPID = "SANDBOX_APPID";
-	public static final String ENV_SANDBOX_CERTID = "SANDBOX_CERTID";
-	public static final String ENV_SANDBOX_RUNAME = "SANDBOX_RUNAME";
-
-	public static final String ENV_PRODUCTION_DEVID = "PRODUCTION_DEVID";
-	public static final String ENV_PRODUCTION_APPID = "PRODUCTION_APPID";
-	public static final String ENV_PRODUCTION_CERTID = "PRODUCTION_CERTID";
-	public static final String ENV_PRODUCTION_RUNAME = "PRODUCTION_RUNAME";
-
-	public static final String ENV_SANDBOX_AUTH_TOKEN = "SANDBOX_AUTH_TOKEN";
-	public static final String ENV_PRODUCTION_AUTH_TOKEN = "PRODUCTION_AUTH_TOKEN";
-
 	public static final String SHOPPING_SANDBOX_ENDPOINT = "http://open.api.sandbox.ebay.com/shopping?";
 	public static final String SHOPPING_PRODUCTION_ENDPOINT = "http://open.api.ebay.com/shopping?";
 

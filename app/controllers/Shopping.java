@@ -1,5 +1,6 @@
 package controllers;
 
+import core.IeBayCallContext;
 import core.shopping.calls.GetSingleItem;
 import core.shopping.calls.GetUserProfile;
 import play.mvc.Controller;
@@ -7,14 +8,27 @@ import viewobjects.shopping.GetItemView;
 import viewobjects.shopping.GetUserView;
 
 public class Shopping extends Controller {
-	public static void getItem(String itemid) {
+	
+//	FindHalfProducts
+//	FindProducts
+//	FindReviewsAndGuides
+//	GetCategoryInfo
+//	GetItemStatus
+//	GetMultipleItems
+//	GetShippingCosts
+//	GetSingleItem
+//	GetUserProfile	
+
+	
+	public static void GetSingleItem(String itemid) {
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
 		GetItemView getItemView = new GetItemView();
 
 		if (itemid != null) {
 			getItemView.itemid = itemid;
-			GetSingleItem getSingleItem = new GetSingleItem(true, itemid);
+			GetSingleItem getSingleItem = new GetSingleItem(itemid);
 
-			getSingleItem.calleBay();
+			getSingleItem.calleBay(eBayCallContext);
 
 			getItemView.title = getSingleItem.getTitle();
 
@@ -25,14 +39,16 @@ public class Shopping extends Controller {
 		render(getItemView);
 	}
 
-	public static void getUser(String username) {
+	public static void GetUserProfile(String username) {
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+
 		GetUserView getUserView = new GetUserView();
 
 		if (username != null) {
 			getUserView.username = username;
-			GetUserProfile getUserProfile = new GetUserProfile(true, username);
+			GetUserProfile getUserProfile = new GetUserProfile(username);
 
-			getUserProfile.calleBay();
+			getUserProfile.calleBay(eBayCallContext);
 
 			getUserView.aboutMeUrl = getUserProfile.getAboutMeUrl();
 			getUserView.feedbackDetailsURL = getUserProfile.getFeedbackDetailsURL();

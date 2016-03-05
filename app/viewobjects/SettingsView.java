@@ -36,15 +36,15 @@ public class SettingsView implements IConstants {
 	}
 
 	public SettingsView() {
-		sandboxDevId = isSet(ENV_SANDBOX_DEVID);
-		sandboxAppId = isSet(ENV_SANDBOX_APPID);
-		sandboxCert = isSet(ENV_SANDBOX_CERTID);
-		sandboxAuthToken = isSet(ENV_SANDBOX_AUTH_TOKEN);
-
-		producitonDevId = isSet(ENV_PRODUCTION_DEVID);
-		producitonAppId = isSet(ENV_PRODUCTION_APPID);
-		producitonCert = isSet(ENV_PRODUCTION_CERTID);
-		productionAuthToken = isSet(ENV_PRODUCTION_AUTH_TOKEN);
+//		sandboxDevId = isSet(ENV_SANDBOX_DEVID);
+//		sandboxAppId = isSet(ENV_SANDBOX_APPID);
+//		sandboxCert = isSet(ENV_SANDBOX_CERTID);
+//		sandboxAuthToken = isSet(ENV_SANDBOX_AUTH_TOKEN);
+//
+//		producitonDevId = isSet(ENV_PRODUCTION_DEVID);
+//		producitonAppId = isSet(ENV_PRODUCTION_APPID);
+//		producitonCert = isSet(ENV_PRODUCTION_CERTID);
+//		productionAuthToken = isSet(ENV_PRODUCTION_AUTH_TOKEN);
 
 		shoppingSandboxEndpoint = SHOPPING_SANDBOX_ENDPOINT;
 		shoppingProductionEndpoint = SHOPPING_PRODUCTION_ENDPOINT;
