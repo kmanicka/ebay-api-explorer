@@ -43,18 +43,27 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="@{Application.index}">Home</a></li>
             <li><a href="@{Application.shopping}">Shopping API</a></li>
             <li><a href="@{Application.trading}">Trading API</a></li>
             <li><a href="@{Application.settings}">Settings</a></li>
             <li><a href="@{Application.about}">About</a></li>
           </ul>
+          
           #{if session.get("username")}
-          	<p class="navbar-text navbar-right">${session.get("username")}</p>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	          ${session.get("username")} 
+	          <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="@{Application.logout}">Logout</a></li>
+	          </ul>
+	        </li>
+	      </ul>          	          	
           #{/if}
           
           #{if !session.get("username")}
-          	<a href="@{Application.login}" class="btn btn-default navbar-btn navbar-right">Sign in</a>          
+	        <a href="@{Application.login}" class="btn btn-default navbar-btn navbar-right">Sign in via eBay</a>
           #{/if}
         </div><!--/.nav-collapse -->
       </div>
