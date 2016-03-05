@@ -6,6 +6,7 @@ import play.mvc.*;
 import viewobjects.IndexView;
 import viewobjects.SettingsView;
 
+import java.net.URLEncoder;
 import java.util.*;
 
 import common.IConstants;
@@ -13,6 +14,8 @@ import common.Util;
 import core.EBayCallContext;
 import core.IeBayCallContext;
 import core.shopping.calls.GeteBayTime;
+import core.trading.calls.FetchToken;
+import core.trading.calls.GetSessionID;
 import core.trading.calls.GeteBayOfficialTime;
 import models.*;
 
@@ -28,7 +31,7 @@ public class Application extends Controller implements IConstants {
 		String eBayAuthToken = (String)Cache.get(session.getId() + "-eBayAuthToken");
 
 		if(eBayAuthToken == null) {
-			Login.login();
+			login(request.url);
 		}
 		
 		GeteBayOfficialTime viewData = new GeteBayOfficialTime(eBayAuthToken);
@@ -40,28 +43,59 @@ public class Application extends Controller implements IConstants {
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
 		GeteBayTime viewData = new GeteBayTime();
 		viewData.calleBay(eBayCallContext);
+		flash.success("jhi");
+		flash.error("errod");
 		render(viewData);
 	}
-
-	public static void settings() {
-
-//		GeteBayTime time = new GeteBayTime();
-//		time.calleBay();
-//
-//		GeteBayOfficialTime officialTime = new GeteBayOfficialTime(null);
-//		officialTime.calleBay();
-//
-//		SettingsView settingsView = new SettingsView();
-//		settingsView.time = time.getTime();
-//		settingsView.shoppingCallAck = time.getAck();
-//		settingsView.shoppingCallResponse = time.getResponseString();
-//
-//		settingsView.officialTime = officialTime.getTime();
-//		settingsView.tradingCallAck = officialTime.getAck();
-//		settingsView.tradingCallResponse = officialTime.getResponseString();
-//
-//		render(settingsView);
+	
+	
+	public static void login(String returnUrl) {
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+		GetSessionID getSessionID = new GetSessionID();
+		getSessionID.calleBay(eBayCallContext);
+		String sessionID = getSessionID.getSessionID();
 		
+		Cache.set(session.getId() + "-sessionID", sessionID, "30mn");
+		Cache.set(session.getId() + "-returnUrl", returnUrl, "30mn");
+		
+		String signInEndpoint = (eBayCallContext.isSandbox()) ? SANDBOX_SIGNIN_ENDPOINT : PRODUCTION_SIGNIN_ENDPOINT;
+
+		String urlString = signInEndpoint + "runame=" + eBayCallContext.getRuName() + "&SessID="
+				+ URLEncoder.encode(sessionID);
+
+		System.out.println("Login.login()" + urlString);
+
+		redirect(urlString);
+	}
+
+	public static void loginAccepted(String tknexp, String username) {
+		System.out.println("Login.loginAccepted()");
+		String sessionID = (String) Cache.get(session.getId() + "-sessionID");
+
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+		FetchToken fetchToken = new FetchToken();
+		fetchToken.setSessionID(sessionID);
+
+		fetchToken.calleBay(eBayCallContext);
+
+		String eBayAuthToken = fetchToken.geteBayAuthToken();
+		Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
+
+		String returnUrl = (String) Cache.get(session.getId() + "-returnUrl");
+		if(returnUrl == null || "".equals(returnUrl.trim())){
+			returnUrl ="/";
+		}
+		flash.success("Welcome " + username);
+		redirect(returnUrl);
+	}
+
+	public static void loginDeclined() {
+		flash.error("Login Failed");
+		index();
+	}
+
+
+	public static void settings() {		
 		SettingsView settingsView = new SettingsView();
 		render(settingsView);
 	}

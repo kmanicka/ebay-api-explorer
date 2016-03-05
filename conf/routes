@@ -7,9 +7,9 @@ GET     /                                       Application.index
 GET     /settings                               Application.settings
 GET     /about                                  Application.about
 
-GET     /login                          		Login.login
-GET     /logincallbackaccept              		Login.loginAccepted
-GET     /logincallbackdecline              		Login.loginDeclined
+GET     /login                          		Application.login
+GET     /logincallbackaccept              		Application.loginAccepted
+GET     /logincallbackdecline              		Application.loginDeclined
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
