@@ -16,6 +16,7 @@ import core.IeBayCallContext;
 import core.shopping.calls.GeteBayTime;
 import core.trading.calls.FetchToken;
 import core.trading.calls.GetSessionID;
+import core.trading.calls.GetUser;
 import core.trading.calls.GeteBayOfficialTime;
 import models.*;
 
@@ -59,41 +60,58 @@ public class Application extends Controller implements IConstants {
 
 		String urlString = signInEndpoint + "runame=" + eBayCallContext.getRuName() + "&SessID="
 				+ URLEncoder.encode(sessionID);
-
-		System.out.println("Login.login()" + urlString);
-
+		System.out.println("Application.login()" + urlString);
 		redirect(urlString);
 	}
 
-	public static void loginAccepted(String username) {
-		System.out.println("Login.loginAccepted()");
+	// this is called by eBay when User Logs in via eBay and Accepts
+	public static void loginAcceptedCallback() {
+		System.out.println("Application.loginAcceptedCallback()");
+
 		String sessionID = (String) Cache.get(session.getId() + "-sessionID");
 
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
 		FetchToken fetchToken = new FetchToken();
 		fetchToken.setSessionID(sessionID);
-
 		fetchToken.calleBay(eBayCallContext);
 
 		String eBayAuthToken = fetchToken.geteBayAuthToken();
 
-		if (eBayAuthToken != null) {
-			session.put("username", username);
-			Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
-
-			String returnUrl = (String) Cache.get(session.getId() + "-returnUrl");
-			if (returnUrl == null || "".equals(returnUrl.trim())) {
-				returnUrl = "/";
-			}
-			flash.success("Welcome " + username);
-			redirect(returnUrl);
+		if (eBayAuthToken == null) {
+			System.err.println("Application.loginAcceptedCallback() : AuthToken is Null");
+			flash.error("Login Failed : could not fetch auth token");
+			index();
+		} else {
+			loginComplete(eBayAuthToken);
 		}
 
-		flash.error("Login Failed : could not fetch auth token");
-		index();
 	}
 
-	public static void loginDeclined() {
+	public static void loginComplete(String eBayAuthToken) {
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+		GetUser getUser = new GetUser(eBayAuthToken);
+		getUser.calleBay(eBayCallContext);
+		String username = getUser.username;
+
+		if (username == null) {
+			System.err.println("Application.loginComplete() : Invalid AuthToken");
+			flash.error("Login Failed : Invalid AuthToken");
+			index();
+		}
+
+		session.put("username", username);
+		Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
+
+		String returnUrl = (String) Cache.get(session.getId() + "-returnUrl");
+		if (returnUrl == null || "".equals(returnUrl.trim())) {
+			returnUrl = "/";
+		}
+
+		flash.success("Welcome " + username);
+		redirect(returnUrl);
+	}
+
+	public static void loginDeclinedCallback() {
 		flash.error("Login Failed : User declined to provide eBay Credentials");
 		index();
 	}
@@ -106,17 +124,9 @@ public class Application extends Controller implements IConstants {
 		index();
 	}
 
-	public static void settings() {
-		SettingsView settingsView = new SettingsView();
-		render(settingsView);
-	}
-
-	public static void about() {
-		render();
-	}
-
 	// Package access only
 	static IeBayCallContext geteBayCallContext() {
+
 		EBayCallContext eBayCallContext = new EBayCallContext();
 
 		String envIsSandbox = Util.getEnvVariable(ENV_SANDBOX);
@@ -135,6 +145,15 @@ public class Application extends Controller implements IConstants {
 		eBayCallContext.setRuName(Util.getEnvVariable(ENV_RUNAME));
 
 		return (IeBayCallContext) eBayCallContext;
+	}
+
+	public static void settings() {
+		SettingsView settingsView = new SettingsView();
+		render(settingsView);
+	}
+
+	public static void about() {
+		render();
 	}
 
 }

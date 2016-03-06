@@ -10,8 +10,10 @@ GET     /settings                               Application.settings
 GET     /about                                  Application.about
 
 GET     /login                          		Application.login
-GET     /logincallbackaccept              		Application.loginAccepted
-GET     /logincallbackdecline              		Application.loginDeclined
+GET     /logincallbackaccept              		Application.loginAcceptedCallback
+GET     /logincallbackdecline              		Application.loginDeclinedCallback
+POST    /logincomplete                          Application.loginComplete
+GET     /logout                          		Application.logout
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
