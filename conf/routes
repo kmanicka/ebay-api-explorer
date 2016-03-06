@@ -4,6 +4,8 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /shopping                               Application.shopping
+GET     /trading                                Application.trading
 GET     /settings                               Application.settings
 GET     /about                                  Application.about
 

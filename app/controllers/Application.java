@@ -65,7 +65,7 @@ public class Application extends Controller implements IConstants {
 		redirect(urlString);
 	}
 
-	public static void loginAccepted(String tknexp, String username) {
+	public static void loginAccepted(String username) {
 		System.out.println("Login.loginAccepted()");
 		String sessionID = (String) Cache.get(session.getId() + "-sessionID");
 
@@ -78,7 +78,6 @@ public class Application extends Controller implements IConstants {
 		String eBayAuthToken = fetchToken.geteBayAuthToken();
 
 		if (eBayAuthToken != null) {
-
 			session.put("username", username);
 			Cache.set(session.getId() + "-eBayAuthToken", eBayAuthToken);
 
@@ -90,7 +89,7 @@ public class Application extends Controller implements IConstants {
 			redirect(returnUrl);
 		}
 
-		flash.error("Login Failed : couldn't fetch auth token");
+		flash.error("Login Failed : could not fetch auth token");
 		index();
 	}
 

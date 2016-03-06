@@ -9,3 +9,49 @@
     assertTitle('eBay API Explorer | Home')
 #{/selenium}
 
+#{selenium}
+    // Open the User Page
+    open('/shopping')
+    
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Shopping Apis')
+
+	// check the geteBayTime Call was successful
+    assertTextPresent('Shopping API Ack Success')
+
+#{/selenium}
+
+
+#{selenium}
+    open('/logincallbackaccept')
+	assertTextPresent('Login Failed : could not fetch auth token')
+
+
+    open('/logincallbackdecline')
+	assertTextPresent('Login Failed : User declined to provide eBay Credentials')
+
+#{/selenium}
+
+
+#{selenium}
+    // Open the home page, and check that no error occured
+    open('/settings')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Settings')
+         
+#{/selenium}
+
+#{selenium}
+    // Open the home page, and check that no error occured
+    open('/about')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | About')
+         
+#{/selenium}
