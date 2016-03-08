@@ -4,12 +4,9 @@ import core.trading.BaseeBayTradingCall;
 import play.libs.XPath;
 
 public class FetchToken extends BaseeBayTradingCall {
-	public String sessionID;
-	public String eBayAuthToken;
+	private String sessionID;
+	private String eBayAuthToken;
 
-	public FetchToken() {
-		super(null);
-	}
 
 	public void setSessionID(String sessionID) {
 		this.sessionID = sessionID;

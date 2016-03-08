@@ -12,19 +12,19 @@
 <div class="row">
   <div class="col-lg-12">    
     <ul class="nav nav-tabs">
-    	<li class="${getUserView.isInputActive()}"><a data-toggle="pill" href="#input">Input</a></li>
-	    <li class="${getUserView.isOutputActive()}"><a data-toggle="pill" href="#output">Output</a></li>
+    	<li class="${viewObject.isInputActive()}"><a data-toggle="pill" href="#input">Input</a></li>
+	    <li class="${viewObject.isOutputActive()}"><a data-toggle="pill" href="#output">Output</a></li>
 	    <li><a data-toggle="pill" href="#request">Request Xml</a></li>
 	    <li><a data-toggle="pill" href="#response">Response Xml</a></li>
     </ul>
   
   <div class="tab-content">
-	  <div id="input" class="tab-pane fade in ${getUserView.isInputActive()}">
+	  <div id="input" class="tab-pane fade in ${viewObject.isInputActive()}">
 	    <h3>Input</h3>
 		  	<form action="@{Shopping.GetUserProfile}" method="get">
 		    <label for="username">Username</label>
 		    <div class="input-group">
-		      <input id="username" name="username" type="text" value="${getUserView.username}" class="form-control" aria-label="ebay user id">
+		      <input id="username" name="username" type="text" value="${viewObject.getUserId()}" class="form-control" aria-label="ebay user id">
 		      <div class="input-group-btn">
 				<input id="finduser" type="submit" value="Find User" class="btn btn-default">
 		      </div>
@@ -32,16 +32,16 @@
 		    </form>
 	  </div>
 
-	  <div id="output" class="tab-pane fade in ${getUserView.isOutputActive()}">
+	  <div id="output" class="tab-pane fade in ${viewObject.isOutputActive()}">
 	    <h3>Output</h3>
 
 %{
-     if(getUserView.username != null) {
+     if(viewObject.getUserId() != null) {
 }%
 
-	    <h3>${getUserView.username}</h3>
-	    <p><a href="${getUserView.aboutMeUrl}"> About Me </a></p>
-	    <p><a href="${getUserView.feedbackDetailsURL}"> Feedback Page </a></p>
+	    <h3>${viewObject.getUserId()}</h3>
+	    <p><a href="${viewObject.getAboutMeUrl()}"> About Me </a></p>
+	    <p><a href="${viewObject.getFeedbackDetailsURL()}"> Feedback Page </a></p>
 
 %{
   } else {
@@ -57,11 +57,11 @@
 	  
 	  <div id="request" class="tab-pane fade in">
 	    <h3>Request Xml</h3>
-	    <pre class="prettyprint">${getUserView.requestString}</pre>
+	    <pre class="prettyprint">${viewObject.getRequestString()}</pre>
 	  </div>
 	  <div id="response" class="tab-pane fade in">
 	    <h3>Response Xml</h3>
-	    <pre class="prettyprint">${getUserView.responseString}</pre>
+	    <pre class="prettyprint">${viewObject.getResponseString()}</pre>
 	  </div>
   </div>
   

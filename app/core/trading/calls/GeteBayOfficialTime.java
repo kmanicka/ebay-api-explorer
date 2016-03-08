@@ -5,11 +5,7 @@ import play.libs.XPath;
 
 public class GeteBayOfficialTime extends BaseeBayTradingCall {
 
-	public String time;
-
-	public GeteBayOfficialTime(String authToken) {
-		super(authToken);
-	}
+	private String time;
 
 	public String getTime() {
 		return time;

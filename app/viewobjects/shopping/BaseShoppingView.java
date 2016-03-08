@@ -1,14 +1,8 @@
 package viewobjects.shopping;
 
-public class BaseShoppingView {
-	public String requestString;
-	public String responseString;
-	
-	public String isOutputActive(){
-		return (responseString==null)?  "" : "active";
-	}
+import core.BaseeBayCall;
+import core.shopping.BaseeBayShoppingCall;
+import viewobjects.BaseApiView;
 
-	public String isInputActive(){
-		return (responseString==null)?  "active" : "";
-	}
+public class BaseShoppingView extends BaseApiView {
 }

@@ -1,11 +1,68 @@
 *{ You can use plain selenium command using the selenium tag }*
 
 #{selenium}
+
     // Open the home page, and check that no error occured
     open('/')
     // check the title of the home page is not error
     assertNotTitle('Application error')
     // check the title of the home page is eBay API Explorer
     assertTitle('eBay API Explorer | Home')
+
 #{/selenium}
 
+#{selenium}
+
+    // Open the User Page
+    open('/shopping')
+    
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Shopping Apis')
+
+	// check the geteBayTime Call was successful
+    assertTextPresent('Shopping API Ack Success')
+
+#{/selenium}
+
+
+#{selenium}
+
+    open('/logincallbackaccept')
+    assertTextPresent('Sign in via eBay')
+	assertTextPresent('could not fetch auth token')
+
+    open('/logincallbackdecline')
+    assertTextPresent('Sign in via eBay')
+	assertTextPresent('User declined to provide eBay Credentials')
+
+    open('/logout')
+	assertTextPresent('Logout Successfull')
+    assertTextPresent('Sign in via eBay')
+
+#{/selenium}
+
+
+#{selenium}
+
+    // Open the home page, and check that no error occured
+    open('/settings')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | Settings')
+         
+#{/selenium}
+
+#{selenium}
+
+    // Open the home page, and check that no error occured
+    open('/about')
+    // check the title of the home page is not error
+    assertNotTitle('Application error')
+    // check the title of the home page is eBay API Explorer
+    assertTitle('eBay API Explorer | About')
+         
+#{/selenium}

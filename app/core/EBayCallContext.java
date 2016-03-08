@@ -10,6 +10,7 @@ public class EBayCallContext implements IeBayCallContext, IConstants {
 	private String appName;
 	private String certName;
 	private String ruName;
+	private String authToken;
 
 	public Boolean isSandbox() {
 		return sandbox;
@@ -49,6 +50,14 @@ public class EBayCallContext implements IeBayCallContext, IConstants {
 
 	public String getRuName() {
 		return ruName;
+	}
+
+	public String getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
 	}
 
 }

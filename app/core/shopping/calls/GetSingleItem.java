@@ -10,6 +10,10 @@ public class GetSingleItem extends BaseeBayShoppingCall{
 	public GetSingleItem(String itemid) {
 		this.itemid = itemid;
 	}
+	
+	public String getItemId(){
+		return itemid;
+	}
 
 	public String getTitle() {
 		return title;

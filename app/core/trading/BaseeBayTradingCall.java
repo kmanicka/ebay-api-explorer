@@ -7,13 +7,6 @@ import core.BaseeBayCall;
 
 public abstract class BaseeBayTradingCall extends BaseeBayCall {
 
-	String authToken;
-
-	public BaseeBayTradingCall(String authToken) {
-		super();
-		this.authToken = authToken;
-	}
-
 	@Override
 	protected String getEndPoint() {
 		return (isProduction()) ? TRADING_PRODUCTION_ENDPOINT : TRADING_SANDBOX_ENDPOINT;
@@ -32,6 +25,6 @@ public abstract class BaseeBayTradingCall extends BaseeBayCall {
 	}
 
 	protected String getRequestCred() {
-		return "<RequesterCredentials><eBayAuthToken>" + this.authToken + "</eBayAuthToken></RequesterCredentials>";
+		return "<RequesterCredentials><eBayAuthToken>" + this.getAuthToken() + "</eBayAuthToken></RequesterCredentials>";
 	}
 }

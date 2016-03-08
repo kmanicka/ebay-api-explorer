@@ -4,11 +4,7 @@ import core.trading.BaseeBayTradingCall;
 import play.libs.XPath;
 
 public class GetUser extends BaseeBayTradingCall {
-	public String username;
-
-	public GetUser(String authToken) {
-		super(authToken);
-	}
+	private String username;
 
 	public String getUsername() {
 		return username;

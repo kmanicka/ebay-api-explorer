@@ -4,11 +4,7 @@ import core.trading.BaseeBayTradingCall;
 import play.libs.XPath;
 
 public class GetSessionID extends BaseeBayTradingCall {
-	public String sessionID;
-
-	public GetSessionID() {
-		super(null);
-	}
+	private String sessionID;
 
 	public String getSessionID() {
 		return sessionID;

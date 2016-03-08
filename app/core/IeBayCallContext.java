@@ -10,4 +10,6 @@ public interface IeBayCallContext {
 	public String getCertName();
 
 	public String getRuName();
+	
+	public String getAuthToken();
 }

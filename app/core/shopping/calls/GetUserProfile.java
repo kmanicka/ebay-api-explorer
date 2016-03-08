@@ -12,6 +12,10 @@ public class GetUserProfile extends BaseeBayShoppingCall {
 		this.userId = userId;
 	}
 
+	public String getUserId(){
+		return userId;
+	}
+	
 	public String getAboutMeUrl() {
 		return aboutMeUrl;
 	}

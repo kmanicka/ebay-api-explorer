@@ -29,13 +29,13 @@ public class Application extends Controller implements IConstants {
 
 	public static void trading() {
 		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
-		String eBayAuthToken = (String) Cache.get(session.getId() + "-eBayAuthToken");
+		String eBayAuthToken = eBayCallContext.getAuthToken();
 
 		if (eBayAuthToken == null) {
 			login(request.url);
 		}
 
-		GeteBayOfficialTime viewData = new GeteBayOfficialTime(eBayAuthToken);
+		GeteBayOfficialTime viewData = new GeteBayOfficialTime();
 		viewData.calleBay(eBayCallContext);
 		render(viewData);
 	}
@@ -88,10 +88,14 @@ public class Application extends Controller implements IConstants {
 	}
 
 	public static void loginComplete(String eBayAuthToken) {
-		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
-		GetUser getUser = new GetUser(eBayAuthToken);
+
+		EBayCallContext eBayCallContext = (EBayCallContext) Application.geteBayCallContext();
+		eBayCallContext.setAuthToken(eBayAuthToken);
+
+		GetUser getUser = new GetUser();
 		getUser.calleBay(eBayCallContext);
-		String username = getUser.username;
+
+		String username = getUser.getUsername();
 
 		if (username == null) {
 			System.err.println("Application.loginComplete() : Invalid AuthToken");
@@ -125,7 +129,7 @@ public class Application extends Controller implements IConstants {
 	}
 
 	// Package access only
-	static IeBayCallContext geteBayCallContext() {
+	public static EBayCallContext geteBayCallContext() {
 
 		EBayCallContext eBayCallContext = new EBayCallContext();
 
@@ -144,7 +148,11 @@ public class Application extends Controller implements IConstants {
 
 		eBayCallContext.setRuName(Util.getEnvVariable(ENV_RUNAME));
 
-		return (IeBayCallContext) eBayCallContext;
+		if (session != null) {
+			eBayCallContext.setAuthToken(Cache.get(session.getId() + "-eBayAuthToken", String.class));
+		}
+		
+		return eBayCallContext;
 	}
 
 	public static void settings() {

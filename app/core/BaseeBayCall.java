@@ -48,6 +48,10 @@ public abstract class BaseeBayCall implements IConstants, IeBayCall {
 		return eBayCallContext.getRuName();
 	}
 
+	protected String getAuthToken() {
+		return eBayCallContext.getAuthToken();
+	}
+
 	public void calleBay(IeBayCallContext eBayCallContext) {
 		this.eBayCallContext = eBayCallContext;
 		try {
