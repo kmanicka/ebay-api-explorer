@@ -6,39 +6,85 @@
     <h1>Settings</h1>
 </div>
 
-<h3>End Points</h3>
-<p>Shopping Sandbox Endpoint : ${settingsView.shoppingSandboxEndpoint}</p>
-<p>Shopping Production Endpoint : ${settingsView.shoppingProductionEndpoint}</p>
-<p>Trading Sandbox Endpoint : ${settingsView.tradingSandboxEndpoint}</p>
-<p>Trading Production Endpoint : ${settingsView.tradingProductionEndpoint}</p>
 
-<h3>Config Vars</h3>
-<p>Sandbox Dev ID : ${settingsView.sandboxDevId}</p>
-<p>Sandbox App ID : ${settingsView.sandboxAppId}</p>
-<p>Sandbox Cert ID : ${settingsView.sandboxCert}</p>
-<p>Sandbox User Auth Token : ${settingsView.sandboxAuthToken}</p>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shopping Sandbox Endpoint</td>
+      <td>${settingsView.ieBayCallContext.SHOPPING_SANDBOX_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Shopping Production Endpoint</td>
+      <td>${settingsView.ieBayCallContext.SHOPPING_PRODUCTION_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Trading Sandbox Endpoint</td>
+      <td>${settingsView.ieBayCallContext.TRADING_SANDBOX_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Trading Production Endpoint</td>
+      <td>${settingsView.ieBayCallContext.TRADING_PRODUCTION_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Signin Sandbox Endpoint</td>
+      <td>${settingsView.ieBayCallContext.SANDBOX_SIGNIN_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Signin Production Endpoint</td>
+      <td>${settingsView.ieBayCallContext.PRODUCTION_SIGNIN_ENDPOINT}</td>
+    </tr>
+    <tr>
+      <td>Is Sandbox</td>
+      <td>${settingsView.ieBayCallContext.isSandbox()}</td>
+    </tr>
+    <tr>
+      <td>Dev Name</td>
+      <td>${settingsView.ieBayCallContext.getDevName()}</td>
+    </tr>
+    <tr>
+      <td>App ID</td>
+      <td>${settingsView.ieBayCallContext.getAppName()}</td>
+    </tr>
+    <tr>
+      <td>Cert ID</td>
+      <td>${settingsView.ieBayCallContext.getCertName()}</td>
+    </tr>
+    <tr>
+      <td>Ru Name</td>
+      <td>${settingsView.ieBayCallContext.getRuName()}</td>
+    </tr>
+    <tr>
+      <td>Is User Auth Token Set</td>
+      <td>${(settingsView.ieBayCallContext.getAuthToken()!=null)}</td>
+    </tr>
 
-<p>Production Dev ID : ${settingsView.sandboxDevId}</p>
-<p>Production App ID : ${settingsView.sandboxAppId}</p>
-<p>Production Cert ID : ${settingsView.sandboxCert}</p>
-<p>Produciton User Auth Token : ${settingsView.productionAuthToken}</p>
+    <tr>
+      <td>Shopping API Ack</td>
+      <td>${settingsView.shoppingCallAck}</td>
+    </tr>
+    <tr>
+      <td>Shopping API Time</td>
+      <td>${settingsView.shoppingCallAck}</td>
+    </tr>
 
-<h3>Shopping API Test</h3>
-<p>Shopping API Ack ${settingsView.shoppingCallAck}</p>
-<p>Current Time is : ${settingsView.time}</p>
+    <tr>
+      <td>Trading API Ack</td>
+      <td>${settingsView.tradingCallAck}</td>
+    </tr>
+    <tr>
+      <td>Trading API Time</td>
+      <td>${settingsView.officialTime}</td>
+    </tr>
 
-<div class="form-group">
-  <label for="response1">GeteBayTime Response:</label>
-  <textarea class="form-control" rows="5" id="response1">${settingsView.shoppingCallResponse}</textarea>
-</div>
 
-<h3>Trading API Test</h3>
-<p>Trading API Ack ${settingsView.tradingCallAck}</p>
-<p>Current Official Time is : ${settingsView.officialTime}</p>
-<div class="form-group">
-  <label for="response2">GeteBayOfficialTime Response:</label>
-  <textarea class="form-control" rows="5" id="response2">${settingsView.tradingCallResponse}</textarea>
-</div>
+  </tbody>
+</table>
 
 
 

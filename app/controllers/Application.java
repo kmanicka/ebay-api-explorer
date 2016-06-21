@@ -156,7 +156,9 @@ public class Application extends Controller implements IConstants {
 	}
 
 	public static void settings() {
-		SettingsView settingsView = new SettingsView();
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+		SettingsView settingsView = new SettingsView(eBayCallContext);
+		
 		render(settingsView);
 	}
 
