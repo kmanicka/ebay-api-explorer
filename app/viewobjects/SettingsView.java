@@ -3,23 +3,21 @@ package viewobjects;
 import common.IConstants;
 import common.Util;
 import core.IeBayCallContext;
+import core.shopping.calls.GeteBayTime;
+import core.trading.calls.GeteBayOfficialTime;
 
 public class SettingsView implements IConstants {
-	public String time;
-	public String shoppingCallAck;
-	public String shoppingCallResponse;
-	
-	public String officialTime;
-	public String tradingCallAck;
-	public String tradingCallResponse;
-	
-	
 	public IeBayCallContext ieBayCallContext;
+	public GeteBayTime geteBayTime;
+	public GeteBayOfficialTime geteBayOfficialTime;
 
 
-	public SettingsView(IeBayCallContext ieBayCallContext) {
+	public SettingsView(IeBayCallContext eBayCallContext, GeteBayTime geteBayTime,
+			GeteBayOfficialTime geteBayOfficialTime) {
 		super();
-		this.ieBayCallContext = ieBayCallContext;
+		this.ieBayCallContext = eBayCallContext; 
+		this.geteBayTime = geteBayTime;
+		this.geteBayOfficialTime = geteBayOfficialTime;
 	}
 
 }

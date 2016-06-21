@@ -156,9 +156,19 @@ public class Application extends Controller implements IConstants {
 	}
 
 	public static void settings() {
-		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
-		SettingsView settingsView = new SettingsView(eBayCallContext);
 		
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+
+		
+		
+		GeteBayTime geteBayTime = new GeteBayTime();
+		geteBayTime.calleBay(eBayCallContext);
+		
+		GeteBayOfficialTime geteBayOfficialTime = new GeteBayOfficialTime();
+		geteBayOfficialTime.calleBay(eBayCallContext);
+		
+		SettingsView settingsView = new SettingsView(eBayCallContext,geteBayTime,geteBayOfficialTime);
+				
 		render(settingsView);
 	}
 
