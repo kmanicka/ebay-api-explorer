@@ -2,12 +2,18 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                                       Application.index
-GET     /shopping                               Application.shopping
-GET     /trading                                Application.trading
-GET     /settings                               Application.settings
-GET     /about                                  Application.about
+# eBay page
+GET     /     		                        	EBayApp.home
+GET     /search		                        	EBayApp.search
+GET     /item	                        		EBayApp.item
+GET     /myebay		                        	EBayApp.myebay
+
+# API page
+GET     /api     		                        Application.index
+GET     /api/shopping                           Application.shopping
+GET     /api/trading                            Application.trading
+GET     /api/settings                           Application.settings
+GET     /api/about                              Application.about
 
 GET     /login                          		Application.login
 GET     /logincallbackaccept              		Application.loginAcceptedCallback
@@ -16,7 +22,9 @@ GET     /logincomplete                          Application.loginComplete
 GET     /logout                          		Application.logout
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                            staticFile:/public/images/favicon.ico
+
+#controllers.Assets.at(path="/public/images", file="favicon.ico")
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

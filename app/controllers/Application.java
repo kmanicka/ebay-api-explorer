@@ -117,7 +117,7 @@ public class Application extends Controller implements IConstants {
 
 	public static void loginDeclinedCallback() {
 		flash.error("Login Failed : User declined to provide eBay Credentials");
-		index();
+		redirect("/");
 	}
 
 	public static void logout() {
@@ -125,7 +125,7 @@ public class Application extends Controller implements IConstants {
 		Cache.delete(session.getId() + "-eBayAuthToken");
 
 		flash.success("Logout Successfull");
-		index();
+		redirect("/");
 	}
 
 	// Package access only

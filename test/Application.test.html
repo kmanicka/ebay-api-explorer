@@ -3,7 +3,7 @@
 #{selenium}
 
     // Open the home page, and check that no error occured
-    open('/')
+    open('/api')
     // check the title of the home page is not error
     assertNotTitle('Application error')
     // check the title of the home page is eBay API Explorer
@@ -14,7 +14,7 @@
 #{selenium}
 
     // Open the User Page
-    open('/shopping')
+    open('/api/shopping')
     
     // check the title of the home page is not error
     assertNotTitle('Application error')
@@ -31,16 +31,16 @@
 #{selenium}
 
     open('/logincallbackaccept')
-    assertTextPresent('Sign in via eBay')
+    //assertTextPresent('Sign in')
 	assertTextPresent('could not fetch auth token')
 
     open('/logincallbackdecline')
-    assertTextPresent('Sign in via eBay')
+    //assertTextPresent('Sign in')
 	assertTextPresent('User declined to provide eBay Credentials')
 
     open('/logout')
 	assertTextPresent('Logout Successfull')
-    assertTextPresent('Sign in via eBay')
+    //assertTextPresent('Sign in')
 
 #{/selenium}
 
@@ -48,7 +48,7 @@
 #{selenium}
 
     // Open the home page, and check that no error occured
-    open('/settings')
+    open('/api/settings')
     // check the title of the home page is not error
     assertNotTitle('Application error')
     // check the title of the home page is eBay API Explorer
@@ -59,7 +59,7 @@
 #{selenium}
 
     // Open the home page, and check that no error occured
-    open('/about')
+    open('/api/about')
     // check the title of the home page is not error
     assertNotTitle('Application error')
     // check the title of the home page is eBay API Explorer
