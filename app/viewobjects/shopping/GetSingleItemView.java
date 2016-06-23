@@ -16,5 +16,11 @@ public class GetSingleItemView extends BaseShoppingView{
 
 		return ((GetSingleItem)baseeBayCall).getTitle();
 	}
+	
+	String getImage() {
+		if (baseeBayCall == null) return null;
+		
+		return ((GetSingleItem)baseeBayCall).getImage();
+	}
 
 }

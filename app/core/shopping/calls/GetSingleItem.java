@@ -6,6 +6,7 @@ import play.libs.XPath;
 public class GetSingleItem extends BaseeBayShoppingCall{
 	String itemid;
 	String title;
+	String image;
 	
 	public GetSingleItem(String itemid) {
 		this.itemid = itemid;
@@ -18,6 +19,11 @@ public class GetSingleItem extends BaseeBayShoppingCall{
 	public String getTitle() {
 		return title;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
 
 	@Override
 	protected String getCallName() {
@@ -38,6 +44,7 @@ public class GetSingleItem extends BaseeBayShoppingCall{
 	@Override
 	protected void processResponse() throws Exception {
 		this.title = XPath.selectText("//Title", super.getResponseXml());
+		this.image = XPath.selectText("//PictureURL", super.getResponseXml());
 	}
 
 

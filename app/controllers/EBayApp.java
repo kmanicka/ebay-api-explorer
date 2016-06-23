@@ -3,6 +3,7 @@ package controllers;
 import common.IConstants;
 import core.IeBayCallContext;
 import core.shopping.calls.GetSingleItem;
+import core.trading.calls.GeteBayOfficialTime;
 import play.mvc.Controller;
 import viewobjects.shopping.GetSingleItemView;
 
@@ -34,6 +35,17 @@ public class EBayApp extends Controller implements IConstants {
 	}
 
 	public static void myebay() {
+		IeBayCallContext eBayCallContext = Application.geteBayCallContext();
+		String eBayAuthToken = eBayCallContext.getAuthToken();
+
+		if (eBayAuthToken == null) {
+			Application.login(request.url);
+		}
+
+		GeteBayOfficialTime viewData = new GeteBayOfficialTime();
+		viewData.calleBay(eBayCallContext);
+		render(viewData);
+
 		render();
 	}
 
