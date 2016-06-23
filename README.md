@@ -16,10 +16,13 @@ See it in action at  [ebay-api-explorer.herokuapp.com](https://ebay-api-explorer
 ## Versions
 
 
-###Version 0.7 (06/12/2016)
+###Version 0.8 (06/22/2016)
+* Basic eBay Home Page 
+
+###Version 0.7 (06/21/2016)
 * Template eBay Page
 
-###Version 0.6 (05/12/2016)
+###Version 0.6 (06/20/2016)
 * Added a settings page to view the current settings
 
 ###Version 0.5

@@ -62,13 +62,13 @@
 	       	<li><a href="@{Application.login}">Sign in</a></li>
           #{/if}
           
-	      	<li><a href="#">Sell </a></li>
+	      	<li><a href="#">Sell</a></li>
 
 	       </ul>        
         
           <ul class="nav navbar-nav navbar-right">
             <li><a href="@{EBayApp.myebay}">MyeBay</a></li>
-            <li><a href="@{EBayApp.myebay}">Cart</a></li>
+			<li><a href="@{Application.index}">Explore APIs </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -78,19 +78,7 @@
 
     <!-- Begin page content -->
     <div class="container">
-    
-		<div class="row">
-		  <div class="col-lg-12">
-		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Search for...">
-		      <span class="input-group-btn">
-		        <button class="btn btn-primary" type="button">Search!</button>
-		      </span>
-		    </div><!-- /input-group -->
-		  </div><!-- /.col-lg-6 -->
-		</div><!-- /.row -->        
-        
-        
+
 	    <div class="header">
 			#{if flash.success}
 				<div class="alert alert-success alert-dismissible" role="alert">
@@ -105,6 +93,19 @@
 				</div>
 			#{/if}
 	    </div>
+    
+		<div class="row">
+		  <div class="col-lg-12">
+		    <form action="@{EBayApp.search}">
+		    <div class="input-group">
+		      <input name="query" type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-primary" type="submit">Search!</button>
+		      </span>
+		    </div><!-- /input-group -->
+		    </form>
+		  </div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->        
 
 
 	  #{doLayout /}

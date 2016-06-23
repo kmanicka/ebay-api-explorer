@@ -4,8 +4,10 @@
 
 # eBay page
 GET     /     		                        	EBayApp.home
+GET     /search/{query}		                    EBayApp.search
 GET     /search		                        	EBayApp.search
-GET     /item	                        		EBayApp.item
+GET     /item/{itemid}                     		EBayApp.item
+GET     /item		                     		EBayApp.item
 GET     /myebay		                        	EBayApp.myebay
 
 # API page
