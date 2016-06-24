@@ -32,13 +32,13 @@ Apart from that following configuration is used to determine if the applicaiton 
 
 ## Versions
 
-### Version 0.9 (06/22/2016)
+### Version 0.9 (06/23/2016)
 * Basic View Item Page 
 
 ### Version 0.8 (06/22/2016)
 * Basic eBay Home Page 
 
-###Version 0.7 (06/21/2016)
+### Version 0.7 (06/21/2016)
 * Template eBay Page
 
 ### Version 0.6 (06/20/2016)
@@ -68,6 +68,16 @@ Apart from that following configuration is used to determine if the applicaiton 
 * CI via CodeShip.
 * Heroku Pipeline Setup 
 
+
+## Todo
+* Search Results Page
+* Listing Page
+* Add to Cart
+* More Shopping API examples
+* More Trading API examples
+* Integrate with New eBay API (Item, Checkout)
+* Integrate with New eBay oAuth 
+* Integrate with PayPal
 
 ### Contact 
 [@Kumaresan](https://twitter.com/kumaresan)
