@@ -13,25 +13,73 @@
   			</div>
 	  		<div class="col-md-4">
 				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">${viewObject.getTitle()}</h3>
-				  </div>
 				  <div class="panel-body">
-				    COST
+					  <table class="table">
+					    <thead>
+					      <tr>
+					        <th> ${viewObject.getTitle()} </th>
+					      </tr>
+					    </thead>
+
+					    <tbody>
+
+					      <tr>
+					        <td>Cost :   ${viewObject.getCost()}</td>
+					      </tr>
+
+					      <tr>
+					        <td>Quantity :  ${viewObject.getQuantity()}  Sold :  ${viewObject.getSold()}  </td>
+					      </tr>
+					    					      
+					      <tr>
+					        <td>Ships From :  ${viewObject.getShipsFrom()}  </td>
+					      </tr>
+
+
+					    </tbody>
+					  </table>
+					  <a class="btn btn-primary" href="#">Buy It Now</a>				    
 				  </div>
 				</div>  		
 	  		</div>
 	  		<div class="col-md-4">
 		  		<div class="panel panel-default">
 				  <div class="panel-body">
-				    <p>Seller Details</p>
-				    <p>${viewObject.getItemId()}</p>
+					  <table class="table table-hover">
+					    <thead>
+					      <tr>
+					        <th>
+					        	<h4>${viewObject.getSeller()} (${viewObject.getSellerFeedback()})</h4>
+					        	<p>${viewObject.getSellerFeedbackPercent()}% Positive Feedback</p>
+					        </th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>Visit Store : ${viewObject.getShipsFrom()}</td>
+					      </tr>
+					      <tr>
+					        <td>Item : ${viewObject.getItemId()}</td>
+					      </tr>
+					      <tr>
+					        <td>Category : ${viewObject.getCategory()}</td>
+					      </tr>
+
+					    </tbody>
+					  </table>
 				  </div>
 				</div>
 	  		</div>
 		</div>
 	    
-	   
+		<div class="row">
+  			<div class="col-md-12">  			
+	  			<div class="panel panel-default">
+				  <div class="panel-heading">Description</div>
+				  <div class="panel-body">${viewObject.getDescription().raw()}</div>
+				</div>
+  			</div>
+		</div>   
 
 %{
   } else {

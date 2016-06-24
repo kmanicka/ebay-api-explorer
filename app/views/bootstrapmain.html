@@ -63,7 +63,10 @@
           #{/if}
           
           #{if !session.get("username")}
-	        <a href="@{Application.login}" class="btn btn-default navbar-btn navbar-right">Sign in via eBay</a>
+          <ul class="nav navbar-nav navbar-right">
+	        <li><a href="@{Application.login}" >Sign in via eBay</a></li>
+	        <li><a href="@{EBayApp.home}">Explore App</a></li>
+	      </ul>
           #{/if}
         </div><!--/.nav-collapse -->
       </div>
