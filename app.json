@@ -16,19 +16,19 @@
       "value": "qjc1ourASNyQ43aISnwwhj0UiquJlXpwseSsYpnS2ZcfTE4TbnmzZiVuxRJBP4ad"
     },
     "DEVID": {
-      "description": "Sandbox Application Key Dev ID"
+      "description": "Dev ID"
     },
     "APPID": {
-      "description": "Sandbox Application Key AppID"
+      "description": "App ID"
     },
     "CERTID": {
-      "description": "Sandbox Application Key CertID"
+      "description": "Cert ID"
     },
     "RUNAME": {
-      "description": "Sandbox RuName used during login"
+      "description": "RuName used during login"
     },
     "SANDBOX": {
-      "description": "Production Application Key Dev ID",
+      "description": "is Sandbox",
       "value": "FALSE"      
     }
   }
